@@ -1,0 +1,49 @@
+@import '~antd/dist/antd.css';
+@import './normalize.scss';
+@import '~@fontsource/roboto/400.css';
+@import '~@fontsource/roboto/500.css';
+@import '~@fontsource/roboto/700.css';
+@import '~@fontsource/fira-sans/400.css';
+@import '~@fontsource/fira-sans/500.css';
+@import '~@fontsource/fira-sans/700.css';
+
+*::-webkit-scrollbar {
+  width: $slider-size;
+  height: $slider-size;
+  background-color: #f9f9fd;
+  position: absolute;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: $gray-light;
+}
+
+body {
+  overflow: auto;
+  background: $white;
+  font-family: 'Fira Sans';
+  color: $gray;
+}
+
+#app {
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  width: 100%;
+  height: fit-content;
+}
+
+h1 {
+  font-size: 48px;
+  line-height: 58px;
+}
+
+h3 {
+  font-size: 20px;
+  line-height: 28px;
+}
+
+h4 {
+  font-size: 18px;
+  line-height: 28px;
+}

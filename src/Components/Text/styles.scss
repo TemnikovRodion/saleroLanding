@@ -1,0 +1,33 @@
+.text {
+  font-size: 14px;
+  opacity: 0.9;
+
+  &.black {
+    color: $gray;
+  }
+
+  &.blue {
+    color: $blue;
+  }
+
+  &.gray {
+    color: $gray-light;
+  }
+
+  &.white {
+    opacity: 1;
+    color: $white;
+  }
+
+  &.normal {
+    font-weight: 400;
+  }
+
+  &.bold {
+    font-weight: 700;
+  }
+
+  &.medium {
+    font-weight: 500;
+  }
+}

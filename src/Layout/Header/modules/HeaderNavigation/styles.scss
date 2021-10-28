@@ -1,0 +1,21 @@
+.header-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 490px;
+}
+
+.header-navigation-button{ 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 207px;
+    height: 47px;
+    background: #ECF3FE;
+    border-radius: 4px;
+
+    &:hover {
+        color: #4385F5;
+      }
+}
+

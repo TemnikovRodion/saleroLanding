@@ -1,0 +1,27 @@
+.title {
+  margin: 0;
+
+  &.black {
+    color: $gray;
+  }
+
+  &.blue {
+    color: $blue;
+  }
+
+  &.gray {
+    color: $gray-light;
+  }
+
+  &.white {
+    color: $white;
+  }
+
+  &.medium {
+    font-weight: 500;
+  }
+
+  &.bold {
+    font-weight: 700;
+  }
+}

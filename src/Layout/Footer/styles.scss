@@ -1,0 +1,21 @@
+.footer {
+  height: $footer-height;
+  display: flex;
+  flex-direction: column;
+  padding: 0 240px;
+  align-items: center;
+  border-top: 1px solid #e6ebf1;
+  justify-content: space-between;
+  width: 100%;
+  background: #ecf3fe;
+}
+
+.footer-devider {
+  margin: 0 11px;
+}
+
+.footer-wrapper {
+  display: flex;
+  width: 100%;
+  padding: 50px 0px 0px 0px;
+}

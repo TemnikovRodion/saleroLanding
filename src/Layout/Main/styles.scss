@@ -1,0 +1,20 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  background: #fcfdff !important;
+  min-width: $content-pc-width;
+  max-width: $content-pc-width;
+  padding: 0 20px;
+  margin: 150px auto 240px;
+  min-height: calc(100vh - #{$header-height} - #{$footer-height});
+
+  @media (max-width: $content-pc-width) {
+    min-width: $content-tablet-width;
+    max-width: $content-tablet-width;
+  }
+
+  @media (max-width: $content-tablet-width) {
+    min-width: $content-mobile-width;
+    max-width: $content-mobile-width;
+  }
+}

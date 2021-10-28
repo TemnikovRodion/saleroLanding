@@ -1,0 +1,32 @@
+.ant-btn {
+  height: 56px;
+  max-width: 207px;
+  min-width: 207px;
+  background: $purple;
+  color: $white;
+}
+
+.ant-input {
+  font-size: 16px;
+  border: none;
+  background-color: transparent;
+}
+
+.ant-input-prefix {
+  margin-right: 12px;
+}
+
+.ant-input-affix-wrapper {
+  font-size: 20px;
+  border: none;
+
+  &:focus,
+  &:hover,
+  &:active {
+    box-shadow: none;
+  }
+}
+
+.ant-input-affix-wrapper-focused {
+  box-shadow: none;
+}

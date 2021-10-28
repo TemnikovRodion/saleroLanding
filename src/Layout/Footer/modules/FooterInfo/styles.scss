@@ -1,0 +1,17 @@
+.footer-info {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-column-gap: 45px;
+}
+
+.footer-info > .text { 
+    font-size: 20px !important;
+    font-weight: 400 !important;
+    font-style: normal !important;
+}
+
+.footer-info-container { 
+    display: flex;
+    flex-direction: column;
+    margin: 6px 0px;
+}
