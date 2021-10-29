@@ -3,7 +3,14 @@
   max-width: 207px;
   min-width: 207px;
   background: $purple;
+  font-weight: 500;
   color: $white;
+
+  &:hover,
+  &:focus {
+    color: $purple;
+    border: 1px solid $purple;
+  }
 }
 
 .ant-input {

@@ -3,7 +3,7 @@ import './styles.scss';
 
 type Props = {
   color?: 'black' | 'blue' | 'gray' | 'red' | 'white';
-  weight?: 'medium' | 'bold';
+  weight?: 'medium' | 'bold' | 'normal';
   level: 1 | 2 | 3 | 4 | 5;
 };
 

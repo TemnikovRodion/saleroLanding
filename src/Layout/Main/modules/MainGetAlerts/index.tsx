@@ -1,6 +1,6 @@
 import React from 'react';
-import { Text } from '@/Components';
-import { Col, Row, Input, Form, Button } from 'antd';
+import { Title, Text } from '@/Components';
+import { Col, Row, Input, Button } from 'antd';
 import { Svg } from '@/Static';
 import './styles.scss';
 
@@ -8,32 +8,24 @@ type Props = {};
 
 export const MainGetAlerts = ({}: Props): React.ReactElement => {
   return (
-    <Row className="main-get-alerts">
-      <Col span={12}>
-        <Row>
-          <img src={Svg.AnalyticsProcessSecond} />
-        </Row>
+    <Row justify={'space-between'}>
+      <Col>
+        <img src={Svg.AnalyticsProcessSecond} />
       </Col>
 
-      <Col span={12}>
-        <Row>
-          Своевременная поставка товаров на склад поможет избежать недополученной выручки и заработать больше, не терять
-          позиции в выдаче.
+      <Col span={11}>
+        <Row className={'main-alerts-info'}>
+          <Text color={'gray'}>
+            Своевременная поставка товаров на склад поможет избежать недополученной выручки и заработать больше, не
+            терять позиции в выдаче.
+          </Text>
         </Row>
 
-        <Form<FormData> layout="vertical" name="login-form">
-          <Form.Item
-            name="email"
-            label={
-              <Text weight={'medium'}>
-                {'Введите свою почту и получайте оповещения о заканчивающихся товарах для "ХХХ ЮРЛИЦО"'}
-              </Text>
-            }
-          />
-
-          <Input className="login-input" />
-          <Button>{'Получать алерты'}</Button>
-        </Form>
+        <Col className={'1'}>
+          <Title level={4} weight={'normal'}>
+            {'Введите свою почту и получайте оповещения о заканчивающихся товарах для "ХХХ ЮРЛИЦО"'}
+          </Title>
+        </Col>
       </Col>
     </Row>
   );
