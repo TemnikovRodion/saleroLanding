@@ -1,8 +1,8 @@
 @import './theme';
 
 $header-height: 70px;
-$footer-height: 245px;
-$content-height-offset: $header-height + $footer-height;
+$footer-pc-height: 245px;
+$footer-mobile-height: 310px;
 $content-max-width: 1440px;
 $content-pc-width: 1200px;
 $content-tablet-width: 768px;

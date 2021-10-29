@@ -6,7 +6,7 @@
   max-width: $content-max-width;
   padding: 0 20px;
   margin: 150px auto 240px;
-  min-height: calc(100vh - #{$header-height} - #{$footer-height});
+  min-height: calc(100vh - #{$header-height} - #{$footer-pc-height});
 
   @media (max-width: $content-pc-width) {
     margin: 50px auto 100px;
@@ -15,5 +15,6 @@
 
   @media (max-width: $content-tablet-width) {
     padding: 0 20px;
+    min-height: calc(100vh - #{$header-height} - #{$footer-mobile-height});
   }
 }

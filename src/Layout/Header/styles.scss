@@ -1,10 +1,10 @@
 .header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   background: #fcfdff !important;
   width: 100%;
-  min-width: 1400px;
-  max-width: 1400px;
+  max-width: $content-max-width;
   margin: 0 auto;
   padding: 0 20px;
   height: $header-height !important;

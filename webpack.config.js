@@ -16,9 +16,7 @@ const plugins = () => {
   const base = [];
 
   let api_host = '';
-  if (isProdMode) api_host = "'https://api.salero.io'";
-  if (isDevMode) api_host = "'http://164.90.202.88:7000'";
-  if (isLocalMode) api_host = "'http://127.0.0.1:8000'";
+  if (isDevMode) api_host = "'http://164.90.202.88:7002'";
 
   base.push(
     new webpack.DefinePlugin({

@@ -18,6 +18,10 @@
   background-color: $gray-light;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   overflow: auto;
   background: $white;
@@ -47,4 +51,16 @@ h3 {
 h4 {
   font-size: 18px;
   line-height: 28px;
+}
+
+@media(max-width: $content-tablet-width) {
+  h1 {
+    font-size: 24px;
+    line-height: 30px;
+  }
+
+  h3, h4 {
+    font-size: 14px;
+    line-height: 22px;
+  }
 }

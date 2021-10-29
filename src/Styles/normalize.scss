@@ -13,11 +13,30 @@
   }
 }
 
-.ant-input {
-  font-size: 16px;
-  border: none;
-  height: 56px;
-  background-color: transparent;
+.ant-input,
+.ant-select-selector {
+  font-size: 16px !important;
+  border: none !important;
+  height: 56px !important;
+  background-color: transparent !important;
+
+  @media (max-width: $content-tablet-width) {
+    font-size: 12px !important;
+    height: 48px !important;
+  }
+}
+
+.ant-select-selection-search-input {
+  height: 100% !important;
+}
+
+.ant-select-selection-search-input,
+.ant-select-selection-placeholder {
+  line-height: 56px !important;
+
+  @media (max-width: $content-tablet-width) {
+    line-height: 48px !important;
+  }
 }
 
 .ant-input-prefix {
@@ -38,4 +57,13 @@
 
 .ant-input-affix-wrapper-focused {
   box-shadow: none;
+}
+
+.ant-menu-title-content {
+  color: $gray;
+  font-weight: bold;
+
+  &:hover {
+    color: $blue;
+  }
 }

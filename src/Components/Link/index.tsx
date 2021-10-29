@@ -5,7 +5,7 @@ import './styles.scss';
 type Props = {
   color?: 'black' | 'blue' | 'gray' | 'red' | 'white';
   weight?: 'normal' | 'medium' | 'bold';
-  target?: '_blank';
+  target?: '_blank' | '_self';
   location: string;
 };
 
@@ -17,11 +17,11 @@ export const Link = ({
   children,
 }: PropsWithChildren<Props>): React.ReactElement => {
   return !target ? (
-    <RouterLink to={location} className={`text ${color} ${weight}`}>
+    <RouterLink to={location} className={`link ${color} ${weight}`}>
       {children}
     </RouterLink>
   ) : (
-    <a href={location} target={target} className={`text ${color} ${weight}`}>
+    <a href={location} target={target} className={`link ${color} ${weight}`}>
       {children}
     </a>
   );

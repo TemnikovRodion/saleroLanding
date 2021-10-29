@@ -1,13 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Title, Text } from '@/Components';
-import { Col, Row, Input, Button } from 'antd';
+import { Col, Row, AutoComplete, Button, Input } from 'antd';
 import { Svg } from '@/Static';
 import { SearchOutlined } from '@ant-design/icons';
+import { useAutocompleteOptions } from './hooks/useAutocompleteOptions';
 import './styles.scss';
+import { useCalculateForm } from './hooks/useCalculateForm';
 
 type Props = {};
 
 export const MainSearchForm = ({}: Props): React.ReactElement => {
+  const { searchValue, setSearchValue, autocompleteOptions } = useAutocompleteOptions();
+  const { calculate, isLoading } = useCalculateForm(searchValue, autocompleteOptions);
+
   return (
     <Row justify={'space-between'}>
       <Col xl={12} xs={24}>
@@ -37,12 +42,27 @@ export const MainSearchForm = ({}: Props): React.ReactElement => {
 
           <Col span={24}>
             <div className={'main-search-form'}>
-              <Input
-                prefix={<SearchOutlined />}
-                placeholder={'ОГРН, ссылка на продавца, название юр.лица'}
+              <AutoComplete
+                value={searchValue}
+                options={autocompleteOptions}
+                onChange={(value) => {
+                  setSearchValue(value);
+                }}
                 className={'main-search-input'}
-              />
-              <Button>Найти</Button>
+              >
+                <Input
+                  prefix={<SearchOutlined />}
+                  placeholder={'ОГРН, ссылка на продавца, название юр.лица'}
+                  className={'main-search-input'}
+                />
+              </AutoComplete>
+
+              <Button
+                disabled={isLoading}
+                onClick={calculate}              
+              >
+                Найти
+              </Button>
             </div>
           </Col>
         </Row>

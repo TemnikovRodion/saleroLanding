@@ -1,21 +1,19 @@
 .footer {
-  height: $footer-height;
+  min-height: $footer-pc-height;
   display: flex;
   flex-direction: column;
-  padding: 0 240px;
-  align-items: center;
+  padding: 50px 240px 0;
   border-top: 1px solid #e6ebf1;
   justify-content: space-between;
   width: 100%;
   background: #ecf3fe;
-}
 
-.footer-devider {
-  margin: 0 11px;
-}
+  @media (max-width: $content-max-width) {
+    padding: 50px 40px 0;
+  }
 
-.footer-wrapper {
-  display: flex;
-  width: 100%;
-  padding: 50px 0px 0px 0px;
+  @media (max-width: $content-tablet-width) {
+    padding: 14px 20px 0;
+    min-height: $footer-mobile-height;
+  }
 }

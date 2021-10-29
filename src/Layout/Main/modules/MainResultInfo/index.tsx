@@ -26,14 +26,14 @@ export const MainResultInfo = ({}: Props): React.ReactElement => {
             </Title>
 
             <Title level={3} weight={'normal'}>
-              {'Среднее время отсутствия:  '}
-              <span className={'blue-title'}>{'4 дня '}</span>
-              {'(считаем: среднее за 30 дней по товарам, которые хотя бы 1 день не были на складе)'}
+              {'Недополученная выручка:  '}
+              <span className={'blue-title'}>{'280 000 рублей'}</span>
             </Title>
 
             <Title level={3} weight={'normal'}>
-              {'Недополученная выручка:  '}
-              <span className={'blue-title'}>{'280 000 рублей'}</span>
+              {'Среднее время отсутствия:  '}
+              <span className={'blue-title'}>{'4 дня '}</span>
+              {'(считаем: среднее за 30 дней по товарам, которые хотя бы 1 день не были на складе)'}
             </Title>
           </Col>
         </Row>

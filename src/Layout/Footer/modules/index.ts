@@ -1,2 +1,2 @@
-export * from './FooterAutor';
+export * from './FooterAuthor';
 export * from './FooterInfo';

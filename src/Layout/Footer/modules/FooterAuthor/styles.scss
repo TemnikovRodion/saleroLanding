@@ -1,0 +1,17 @@
+.footer-author {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 14px 0 18px;
+  border-top: 1px solid #A3AEBB;
+
+  & > .text {
+    font-size: 12px !important;
+    color: #a3aebb;
+  }
+
+  @media (max-width: $content-tablet-width) {
+    display: grid;
+    row-gap: 8px;
+  }
+}

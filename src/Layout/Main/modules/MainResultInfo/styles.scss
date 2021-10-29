@@ -6,4 +6,13 @@
 .main-result-block {
   background: $blue-light;
   padding: 30px 40px 30px 30px;
+
+  @media(max-width: $content-tablet-width) {
+    padding: 18px 10px 18px 15px;
+
+    & > h3 {
+      font-size: 12px;
+      line-height: 22px;
+    }
+  }
 }
