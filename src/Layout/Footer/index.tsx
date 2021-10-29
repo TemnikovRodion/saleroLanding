@@ -12,6 +12,7 @@ export const Footer = ({ }: Props): React.ReactElement => {
         <HeaderLogo />
         <FooterInfo />
       </div>
+      
       <FooterAutor />
     </footer>
   );

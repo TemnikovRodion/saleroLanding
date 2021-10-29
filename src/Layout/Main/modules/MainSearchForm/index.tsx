@@ -10,7 +10,7 @@ type Props = {};
 export const MainSearchForm = ({}: Props): React.ReactElement => {
   return (
     <Row justify={'space-between'}>
-      <Col span={11}>
+      <Col xl={12} xs={24}>
         <Row gutter={[0, 20]} className={'main-search-title'}>
           <Col span={24}>
             <Title level={1} weight={'bold'}>
@@ -36,7 +36,7 @@ export const MainSearchForm = ({}: Props): React.ReactElement => {
           </Col>
 
           <Col span={24}>
-            <div className={'search-button-group'}>
+            <div className={'main-search-form'}>
               <Input
                 prefix={<SearchOutlined />}
                 placeholder={'ОГРН, ссылка на продавца, название юр.лица'}
@@ -48,8 +48,8 @@ export const MainSearchForm = ({}: Props): React.ReactElement => {
         </Row>
       </Col>
 
-      <Col>
-        <img src={Svg.AnalyticsProcessFirst} />
+      <Col xl={10} xs={0}>
+        <img style={{ width: '100%', height: 'auto' }} src={Svg.AnalyticsProcessFirst} />
       </Col>
     </Row>
   );

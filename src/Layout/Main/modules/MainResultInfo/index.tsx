@@ -8,7 +8,7 @@ type Props = {};
 export const MainResultInfo = ({}: Props): React.ReactElement => {
   return (
     <Row>
-      <Col span={22}>
+      <Col xl={22} xs={24}>
         <Row gutter={[0, 20]}>
           <Col span={24}>
             <Title level={4}>{'Поиск выдал: '}</Title>

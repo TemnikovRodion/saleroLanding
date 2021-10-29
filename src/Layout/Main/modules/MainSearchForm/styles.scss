@@ -6,10 +6,18 @@
   margin-bottom: 45px;
 }
 
-.search-button-group {
+.main-search-form {
   display: flex;
 }
 
 .main-search-input {
   background-color: $blue-light;
+}
+
+@media (max-width: $content-tablet-width) {
+  .main-search-form {
+    flex-direction: column;
+    align-items: center;
+    row-gap: 10px;
+  }
 }
