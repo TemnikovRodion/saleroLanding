@@ -1,27 +1,37 @@
 import { AutocompleteApi } from "@/Api/Autocomplete";
-import { useEffect, useState } from "react";
+import { OptionType } from "@/Types/OptionType";
+import { SellerType } from "@/Types/SellerType";
+import { useCallback, useState } from "react";
 
-export const useAutocompleteOptions = () => {
-    const [searchValue, setSearchValue] = useState('');
-    const [autocompleteOptions, setAutocompleteOptions] = useState<{ label: string, value: number }[]>([]);
+export const useAutocompleteOptions = (setSeller:(seller?:SellerType) => void) => {
+    const [sellerOptions, setSellerOptions] = useState<SellerType[]>([]);
+    const [autocompleteOptions, setAutocompleteOptions] = useState<OptionType[]>([]);
 
-    useEffect(() => {
-        if(searchValue.length >= 2) {
-            AutocompleteApi.getAutocompleteList({ item: searchValue })
+    const selectSeller = useCallback((value: string) => {
+        setSeller(sellerOptions.find(option => option.seller_name === value));
+        setAutocompleteOptions([]);
+        setSellerOptions([]);
+    }, [sellerOptions]) // selectSeller
+
+    const loadAutocompleteOptions = useCallback((value: string) => {
+        if(value.length === 3) {
+            AutocompleteApi.getAutocompleteList({ item: value })
             .then((response) => {
-                const responseList = response.data.suggestion_list.map(item => ({
-                    label: item.seller_name,
-                    value: item.seller_id
-                }))
+                const suggestion_list = response.data.suggestion_list;
 
-                setAutocompleteOptions(responseList);
+                setSellerOptions(suggestion_list);
+                setAutocompleteOptions(suggestion_list.map(item => ({
+                    key: `${item.seller_name}_${item.seller_link}_${item.seller_ogrn}`,
+                    value: item.seller_name 
+                })));
             });
         } // if
-    }, [searchValue])
+    }, []) // loadAutocompleteOptions
 
     return {
-        searchValue,
-        setSearchValue,
+        selectSeller,
+        loadAutocompleteOptions,
         autocompleteOptions,
+        setAutocompleteOptions
     }
 }

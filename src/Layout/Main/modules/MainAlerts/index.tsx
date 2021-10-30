@@ -24,7 +24,7 @@ export const MainAlerts = ({}: Props): React.ReactElement => {
           </Col>
 
           <Col span={24}>
-            <div id={'alerts'} className={'main-alerts-form'}>
+            <div className={'main-alerts-form'}>
               <Title level={4} weight={'normal'}>
                 {'Введите свою почту и получайте оповещения о заканчивающихся товарах для "ХХХ ЮРЛИЦО"'}
               </Title>

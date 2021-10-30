@@ -1,17 +1,26 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Title, Text } from '@/Components';
-import { Col, Row, AutoComplete, Button, Input } from 'antd';
+import { Col, Row, Select, Button } from 'antd';
 import { Svg } from '@/Static';
-import { SearchOutlined } from '@ant-design/icons';
 import { useAutocompleteOptions } from './hooks/useAutocompleteOptions';
-import './styles.scss';
 import { useCalculateForm } from './hooks/useCalculateForm';
+import { SellerType } from '@/Types/SellerType';
+import './styles.scss';
+import { SellerInfoType } from '@/Types/SellerInfoType';
 
-type Props = {};
+type Props = {
+  seller?: SellerType;
+  setSeller: (seller?: SellerType) => void;
+  setSellerInfo: (sellerInfo: SellerInfoType) => void;
+};
 
-export const MainSearchForm = ({}: Props): React.ReactElement => {
-  const { searchValue, setSearchValue, autocompleteOptions } = useAutocompleteOptions();
-  const { calculate, isLoading } = useCalculateForm(searchValue, autocompleteOptions);
+export const MainSearchForm = ({
+  seller,
+  setSeller,
+  setSellerInfo
+}: Props): React.ReactElement => {
+  const { loadAutocompleteOptions, selectSeller, autocompleteOptions } = useAutocompleteOptions(setSeller);
+  const { calculate, isLoading } = useCalculateForm(setSellerInfo, seller);
 
   return (
     <Row justify={'space-between'}>
@@ -42,20 +51,31 @@ export const MainSearchForm = ({}: Props): React.ReactElement => {
 
           <Col span={24}>
             <div className={'main-search-form'}>
-              <AutoComplete
-                value={searchValue}
-                options={autocompleteOptions}
+              <Select
+                showSearch={true}
+                showArrow={false}
+                placeholder={'ОГРН, ссылка на продавца, название юр.лица'}
+                onSearch={(value) => {
+                  loadAutocompleteOptions(value);
+                }}
+                filterOption={(value, option) => {
+                  if(option) {
+                    return String(option.key).toLowerCase().includes(value.toLowerCase());
+                  } // if
+
+                  return false;
+                }}
                 onChange={(value) => {
-                  setSearchValue(value);
+                  selectSeller(String(value));
                 }}
                 className={'main-search-input'}
               >
-                <Input
-                  prefix={<SearchOutlined />}
-                  placeholder={'ОГРН, ссылка на продавца, название юр.лица'}
-                  className={'main-search-input'}
-                />
-              </AutoComplete>
+                {autocompleteOptions.map(option => (
+                  <Select.Option key={option.key} value={option.value}>
+                    {option.value}
+                  </Select.Option>
+                ))}
+              </Select>
 
               <Button
                 disabled={isLoading}
