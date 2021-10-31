@@ -1,34 +1,19 @@
-import { globalHistory } from '@/GlobalHistory';
 import { BaseResponse } from './BaseResponse';
 import { ResponseStatus } from './ResponseStatus';
-import { message } from 'antd';
 import axios from 'axios';
 import qs from 'qs';
-import { ResponseErrors } from './ResponseErrors';
 
 axios.interceptors.response.use(
   function (response) {
     const data = response.data as BaseResponse<void>;
 
     if (data.status === ResponseStatus.fail) {
-      const errorMessage = ResponseErrors[data.message as keyof typeof ResponseErrors] ?? null;
-
-      if (errorMessage) {
-        message.error(errorMessage);
-      } // if
-
-      return Promise.reject(response);
+      return Promise.reject(response.data);
     } // if
 
     return response;
   },
   function (error) {
-    const errorMessage = ResponseErrors[error.response.data.message as keyof typeof ResponseErrors] ?? null;
-
-    if (errorMessage) {
-      message.error(errorMessage);
-    } // if
-
     return Promise.reject(error);
   },
 );

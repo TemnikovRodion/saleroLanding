@@ -12,7 +12,7 @@ type Props = {
   onCancel?: () => void;
 };
 
-export const Modal = ({ title, visible, width, body, onCancel }: Props): React.ReactElement => {
+export const Modal = ({ title, visible, width, buttons, body, onCancel }: Props): React.ReactElement => {
   return (
     <ModalWindow
       width={width}
@@ -23,10 +23,10 @@ export const Modal = ({ title, visible, width, body, onCancel }: Props): React.R
       footer={false}
     >
       <div className={'modal-body'}>
-        <div className={'modal-body-content'}>
           <Title level={4}>{title}</Title>
           {body}
-        </div>
+
+          {buttons && <div className={'modal-body-buttons'}>{buttons}</div>}
       </div>
     </ModalWindow>
   );

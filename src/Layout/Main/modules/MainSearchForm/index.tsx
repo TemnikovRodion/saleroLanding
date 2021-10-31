@@ -78,6 +78,7 @@ export const MainSearchForm = ({
               </Select>
 
               <Button
+                loading={isLoading}
                 disabled={isLoading || !seller}
                 onClick={calculate}              
               >
