@@ -4,7 +4,7 @@
   align-items: center;
   width: 490px;
 
-  @media(max-width: $content-tablet-width) {
+  @media (max-width: $content-tablet-width) {
     display: none;
   }
 }
@@ -17,6 +17,9 @@
   height: 47px;
   background: #ecf3fe;
   border-radius: 4px;
+  cursor: pointer;
+  color: $blue;
+  font-weight: 700;
   transition: $default-transition;
 
   &:hover {
@@ -24,5 +27,3 @@
     background: #1669f8;
   }
 }
-
-
