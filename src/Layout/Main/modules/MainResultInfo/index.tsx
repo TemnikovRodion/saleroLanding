@@ -2,6 +2,7 @@ import React from 'react';
 import { Col, Row } from 'antd';
 import { Title } from '@/Components';
 import { SellerInfoType } from '@/Types/SellerInfoType';
+import { stringUtils } from '@/Utils/StringUtils';
 import './styles.scss';
 
 type Props = {
@@ -33,20 +34,22 @@ export const MainResultInfo = ({ sellerInfo }: Props): React.ReactElement => {
             </Title>
 
             <Title level={3} weight={'normal'}>
-              {'Недополученная выручка: '}
-              <span className={'blue-title'}>{sellerInfo ? `${sellerInfo.lost_revenue} рублей` : placeholder}</span>
-            </Title>
-
-            <Title level={3} weight={'normal'}>
               {'Среднее время отсутствия: '}
               {sellerInfo ? (
                 <>
-                  <span className={'blue-title'}>{`${sellerInfo.average_time_away} дня`}</span>
+                  <span className={'blue-title'}>{`${stringUtils.getFormattedDay(
+                    sellerInfo.average_time_away,
+                  )} `}</span>
                   {' (считаем: среднее за 30 дней по товарам, которые хотя бы 1 день не были на складе)'}
                 </>
               ) : (
                 <span className={'blue-title'}>{placeholder}</span>
               )}
+            </Title>
+
+            <Title level={3} weight={'normal'}>
+              {'Недополученная выручка: '}
+              <span className={'blue-title'}>{sellerInfo ? `${sellerInfo.lost_revenue} рублей` : placeholder}</span>
             </Title>
           </Col>
         </Row>
