@@ -15,7 +15,7 @@ const ModalSubscribe = ({ visible, onClose }: Props): React.ReactElement => {
       visible={visible}
       body={
         <div className={'modal-subscription'}>
-          <Text>{'Вы подписались на получение алертов'}</Text>
+          <Text>{'Вы подписались на получение алертов!'}</Text>
         </div>
       }
       onCancel={onClose}

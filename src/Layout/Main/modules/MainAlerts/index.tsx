@@ -2,11 +2,15 @@ import React from 'react';
 import { Title, Text } from '@/Components';
 import { Button, Col, Input, Row } from 'antd';
 import { Svg } from '@/Static';
+import { SellerType } from '@/Types/SellerType';
 import './styles.scss';
 
-type Props = {};
+type Props = {
+  seller?: SellerType;
+  alertsBlockRef: React.RefObject<HTMLDivElement>;
+};
 
-export const MainAlerts = ({}: Props): React.ReactElement => {
+export const MainAlerts = ({ seller, alertsBlockRef }: Props): React.ReactElement => {
   return (
     <Row align={'middle'} justify={'space-between'} className={'main-alerts-wrapper'}>
       <Col xl={10} xs={0}>
@@ -24,7 +28,7 @@ export const MainAlerts = ({}: Props): React.ReactElement => {
           </Col>
 
           <Col span={24}>
-            <div className={'main-alerts-form'}>
+            <div ref={alertsBlockRef} className={'main-alerts-form'}>
               <Title level={4} weight={'normal'}>
                 {'Введите свою почту и получайте оповещения о заканчивающихся товарах для "ХХХ ЮРЛИЦО"'}
               </Title>
@@ -33,7 +37,7 @@ export const MainAlerts = ({}: Props): React.ReactElement => {
                 placeholder={'Введите почту'}
                 className={'main-alerts-input'}
               />
-              <Button>Получать алерты</Button>
+              <Button disabled={!seller}>Получать алерты</Button>
             </div>
           </Col>
         </Row>

@@ -3,13 +3,15 @@ import { Layout } from 'antd';
 import { HeaderLogo, HeaderNavigation, HeaderMobileNavigation } from './modules';
 import './styles.scss';
 
-type Props = {};
+type Props = {
+  scrollToAlerts: () => void;
+};
 
-export const Header = ({ }: Props): React.ReactElement => {
+export const Header = ({ scrollToAlerts }: Props): React.ReactElement => {
   return (
     <Layout.Header className={'header'} id={'header'}>
       <HeaderLogo />
-      <HeaderNavigation />
+      <HeaderNavigation scrollToAlerts={scrollToAlerts} />
       <HeaderMobileNavigation />
     </Layout.Header>
   );

@@ -5,7 +5,11 @@ import { SellerInfoType } from '@/Types/SellerInfoType';
 import { SellerType } from '@/Types/SellerType';
 import './styles.scss';
 
-export const Main = (): React.ReactElement => {
+type Props = {
+  alertsBlockRef: React.RefObject<HTMLDivElement>;
+}
+
+export const Main = ({ alertsBlockRef }:Props): React.ReactElement => {
   const [seller, setSeller] = useState<SellerType>();
   const [sellerInfo, setSellerInfo] = useState<SellerInfoType>();
 
@@ -14,7 +18,7 @@ export const Main = (): React.ReactElement => {
       <Row gutter={[0, 40]}>
         <MainSearchForm seller={seller} setSeller={setSeller} setSellerInfo={setSellerInfo} />
         <MainResultInfo sellerInfo={sellerInfo} />
-        <MainAlerts />
+        <MainAlerts seller={seller} alertsBlockRef={alertsBlockRef} />
       </Row>
     </main>
   );
