@@ -4,12 +4,20 @@ import { MenuOutlined } from '@ant-design/icons';
 import { HeaderNavigation } from '..';
 import './styles.scss';
 
-type Props = {};
+type Props = {
+  scrollToAlerts: () => void;
+  className?: string;
+};
 
-export const HeaderMobileNavigation = ({}: Props): React.ReactElement => {
-    return (
-      <Dropdown trigger={['click']} arrow={true} placement="bottomRight" overlay={<HeaderNavigation className={'header-mobile-navigation'} />}>
-        <MenuOutlined className={'header-mobile-navigation-icon'} />
-      </Dropdown>
-    );
+export const HeaderMobileNavigation = ({ scrollToAlerts, className = '' }: Props): React.ReactElement => {
+  return (
+    <Dropdown
+      trigger={['click']}
+      arrow={true}
+      placement="bottomRight"
+      overlay={<HeaderNavigation scrollToAlerts={scrollToAlerts} className={'header-mobile-navigation'} />}
+    >
+      <MenuOutlined className={'header-mobile-navigation-icon'} />
+    </Dropdown>
+  );
 };

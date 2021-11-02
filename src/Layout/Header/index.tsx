@@ -4,6 +4,7 @@ import { HeaderLogo, HeaderNavigation, HeaderMobileNavigation } from './modules'
 import './styles.scss';
 
 type Props = {
+  className?: string;
   scrollToAlerts: () => void;
 };
 
@@ -12,7 +13,7 @@ export const Header = ({ scrollToAlerts }: Props): React.ReactElement => {
     <Layout.Header className={'header'} id={'header'}>
       <HeaderLogo />
       <HeaderNavigation scrollToAlerts={scrollToAlerts} />
-      <HeaderMobileNavigation />
+      <HeaderMobileNavigation scrollToAlerts={scrollToAlerts} />
     </Layout.Header>
   );
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, Link } from '@/Components';
+import { Link } from '@/Components';
 import './styles.scss';
 
 type Props = {
@@ -14,15 +14,12 @@ export const HeaderNavigation = ({ scrollToAlerts, className = '' }: Props): Rea
         {'Блог'}
       </Link>
 
-      <Link color={'black'} target={'_blank'} weight={'bold'} location={'https://salero.io/'}>
-        {'Тарифы'}
-      </Link>
-
       <Link color={'black'} target={'_blank'} weight={'bold'} location={'https://app.salero.io/auth/login'}>
         {'Войти'}
       </Link>
-
-      <div className={`header-navigation-button`} onClick={scrollToAlerts}>{'Получать алерты'}</div>
+      <div className={`header-navigation-button`} onClick={scrollToAlerts}>
+        {'Получать алерты'}
+      </div>
     </div>
   );
 };

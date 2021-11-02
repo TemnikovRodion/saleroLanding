@@ -13,6 +13,7 @@
     display: grid;
     grid-template-columns: repeat(2, auto);
     justify-items: flex-start;
+    align-items: flex-start;
     row-gap: 12px;
     column-gap: 45px;
 
@@ -27,7 +28,7 @@
       }
     }
 
-    @media(max-width: $content-pc-width) {
+    @media (max-width: $content-pc-width) {
       .footer-info-links-group {
         & > .link {
           font-size: 16px;
@@ -35,7 +36,7 @@
       }
     }
 
-    @media(max-width: $content-tablet-width) {
+    @media (max-width: $content-tablet-width) {
       grid-template-columns: auto;
       row-gap: 6px;
 
@@ -47,11 +48,11 @@
     }
   }
 
-  @media(max-width: $content-pc-width) {
+  @media (max-width: $content-pc-width) {
     column-gap: 50px;
   }
 
-  @media(max-width: $content-tablet-width) {
+  @media (max-width: $content-tablet-width) {
     grid-template-columns: auto;
     row-gap: 24px;
     margin-bottom: 24px;

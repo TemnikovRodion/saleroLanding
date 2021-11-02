@@ -13,14 +13,7 @@ type Props = {
 };
 
 export const MainAlerts = ({ seller, alertsBlockRef }: Props): React.ReactElement => {
-  const { 
-    email, 
-    setEmail, 
-    subscribe, 
-    isLoading,
-    modal,
-    setModal
-  } = useAlertsSubscription(seller);
+  const { email, setEmail, subscribe, isLoading, modal, setModal } = useAlertsSubscription(seller);
 
   return (
     <>
@@ -28,7 +21,7 @@ export const MainAlerts = ({ seller, alertsBlockRef }: Props): React.ReactElemen
         title={modal.title}
         message={modal.message}
         visible={modal.visible}
-        onClose={() => setModal(prev => ({ ...prev, visible: false }))}
+        onClose={() => setModal((prev) => ({ ...prev, visible: false }))}
       />
 
       <Row align={'middle'} justify={'space-between'} className={'main-alerts-wrapper'}>
@@ -40,7 +33,7 @@ export const MainAlerts = ({ seller, alertsBlockRef }: Props): React.ReactElemen
           <Row gutter={[0, 27]}>
             <Col span={24}>
               <Text color={'gray'} align={'center'}>
-                Своевременная поставка товаров на склад поможет избежать 
+                Своевременная поставка товаров на склад поможет избежать
                 <br />
                 недополученной выручки и заработать больше, не терять позиции в выдаче.
               </Text>
@@ -49,7 +42,9 @@ export const MainAlerts = ({ seller, alertsBlockRef }: Props): React.ReactElemen
             <Col span={24}>
               <div ref={alertsBlockRef} className={'main-alerts-form'}>
                 <Title level={4} weight={'normal'}>
-                  {`Введите свою почту и получайте оповещения о заканчивающихся товарах для ${seller?.seller_name ?? '"ХХХ ЮРЛИЦО"'}`}
+                  {`Введите свою почту и получайте оповещения о заканчивающихся товарах для ${
+                    seller?.seller_name ?? '"ХХХ ЮРЛИЦО"'
+                  }`}
                 </Title>
 
                 <Tooltip
@@ -65,13 +60,15 @@ export const MainAlerts = ({ seller, alertsBlockRef }: Props): React.ReactElemen
                   />
                 </Tooltip>
 
-                <Button
-                  loading={isLoading}
-                  disabled={!seller || !email || isLoading}
-                  onClick={subscribe}
+                <Tooltip
+                  trigger={'hover'}
+                  title={!seller ? 'Пожалуйста, сначала введите ОГРН, ссылку на продавца или название юр.лица!' : ''}
+                  placement={'topRight'}
                 >
-                  Получать алерты
-                </Button>
+                  <Button loading={isLoading} disabled={!seller || !email || isLoading} onClick={subscribe}>
+                    Получать алерты
+                  </Button>
+                </Tooltip>
               </div>
             </Col>
           </Row>

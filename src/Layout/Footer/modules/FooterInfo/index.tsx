@@ -28,10 +28,6 @@ export const FooterInfo = ({}: Props): React.ReactElement => {
         </div>
 
         <div className={'footer-info-links-group'}>
-          <Link location={'https://salero.io/'} target={'_blank'} color={'black'}>
-            {'Тарифы'}
-          </Link>
-
           <Link location={'https://salero.io/?post_type=post'} target={'_blank'} color={'black'}>
             {'Блог'}
           </Link>

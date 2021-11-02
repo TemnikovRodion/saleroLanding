@@ -4,6 +4,7 @@ import { Title } from '@/Components';
 import { SellerInfoType } from '@/Types/SellerInfoType';
 import { stringUtils } from '@/Utils/StringUtils';
 import './styles.scss';
+import { numberUtils } from '@/Utils/NumberUtils';
 
 type Props = {
   sellerInfo?: SellerInfoType;
@@ -49,7 +50,9 @@ export const MainResultInfo = ({ sellerInfo }: Props): React.ReactElement => {
 
             <Title level={3} weight={'normal'}>
               {'Недополученная выручка: '}
-              <span className={'blue-title'}>{sellerInfo ? `${sellerInfo.lost_revenue} рублей` : placeholder}</span>
+              <span className={'blue-title'}>
+                {sellerInfo ? `${numberUtils.getMoneyString(sellerInfo.lost_revenue)} рублей` : placeholder}
+              </span>
             </Title>
           </Col>
         </Row>
