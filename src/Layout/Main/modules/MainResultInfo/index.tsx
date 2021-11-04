@@ -41,7 +41,7 @@ export const MainResultInfo = ({ sellerInfo }: Props): React.ReactElement => {
                   <span className={'blue-title'}>{`${stringUtils.getFormattedDay(
                     sellerInfo.average_time_away,
                   )} `}</span>
-                  {' (считаем: среднее за 30 дней по товарам, которые хотя бы 1 день не были на складе)'}
+                  {' (Сколько дней в среднем товары не были на складе)'}
                 </>
               ) : (
                 <span className={'blue-title'}>{placeholder}</span>

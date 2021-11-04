@@ -16,6 +16,7 @@ const plugins = () => {
   const base = [];
 
   let api_host = '';
+  if (isProdMode) api_host = "'https://api.alerts.salero.io'";
   if (isDevMode) api_host = "'http://164.90.202.88:7002'";
 
   base.push(

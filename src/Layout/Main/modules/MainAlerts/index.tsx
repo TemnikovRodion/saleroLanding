@@ -66,7 +66,7 @@ export const MainAlerts = ({ seller, alertsBlockRef }: Props): React.ReactElemen
                   placement={'topRight'}
                 >
                   <Button loading={isLoading} disabled={!seller || !email || isLoading} onClick={subscribe}>
-                    Получать алерты
+                    Получать уведомления
                   </Button>
                 </Tooltip>
               </div>

@@ -18,7 +18,7 @@ export const HeaderNavigation = ({ scrollToAlerts, className = '' }: Props): Rea
         {'Войти'}
       </Link>
       <div className={`header-navigation-button`} onClick={scrollToAlerts}>
-        {'Получать алерты'}
+        {'Получать уведомления'}
       </div>
     </div>
   );
