@@ -2,6 +2,7 @@ import { AutocompleteApi } from '@/Api/Autocomplete';
 import { OptionType } from '@/Types/OptionType';
 import { SellerType } from '@/Types/SellerType';
 import { useCallback, useState } from 'react';
+import { MarketplaceRouting } from '@/Routing';
 
 export const useAutocompleteOptions = (setSeller: (seller?: SellerType) => void) => {
   const [autocompleteExpression, setAutocompleteExpression] = useState('');
@@ -11,19 +12,23 @@ export const useAutocompleteOptions = (setSeller: (seller?: SellerType) => void)
   const selectSeller = useCallback(
     (value: string) => {
       setSeller(sellerOptions.find((option) => option.seller_name === value));
-      setAutocompleteOptions([]);
-      setSellerOptions([]);
     },
     [sellerOptions],
   ); // selectSeller
 
   const loadAutocompleteOptions = useCallback((value: string) => {
     let seachExpression = '';
-    if(value.length > 2) {
-        seachExpression = value.slice(0, 3).toLowerCase();
+
+    // Проверка url
+    const { isSeller, isCatalog } = MarketplaceRouting.isMarketplaceUrl(value);
+    if(isSeller || isCatalog) {
+      seachExpression = isSeller ? MarketplaceRouting.sliceSellerUrl(value) : MarketplaceRouting.sliceCatalogUrl(value);
+    } else if(value.length > 2) {
+      seachExpression = value.slice(0, 3).toLowerCase();
     } // if
 
-    if (autocompleteExpression.localeCompare(seachExpression) !== 0 && seachExpression.length === 3) {
+    if (autocompleteExpression.localeCompare(seachExpression) !== 0
+        && (seachExpression.length === 3 || ((isSeller || isCatalog) && seachExpression.length !== 0))){
       setAutocompleteExpression(seachExpression);
 
       AutocompleteApi.getAutocompleteList({ item: seachExpression })
