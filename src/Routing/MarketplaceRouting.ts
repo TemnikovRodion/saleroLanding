@@ -1,5 +1,3 @@
-const searchSymbolsCount = 3;
-
 const marketplaceUrls = {
     catalog: 'wildberries.ru/catalog/',
     seller: 'wildberries.ru/seller/'
@@ -7,20 +5,22 @@ const marketplaceUrls = {
 
 // Формирование поисковой ссылки для продавца
 const sliceSellerUrl = (str: string) => {
-    const idx = str.indexOf(marketplaceUrls.seller) + marketplaceUrls.seller.length + searchSymbolsCount;
+    const startIndex = str.indexOf(marketplaceUrls.seller) + marketplaceUrls.seller.length;
+    const endIndex = str.indexOf('/', startIndex);
 
-    if(idx > str.length) return '';
+    if(endIndex === - 1) return '';
 
-    return str.slice(0, idx);
+    return str.slice(0, endIndex);
 }
 
 // Формирование поисковой ссылки для каталога
 const sliceCatalogUrl = (str: string) => {
-    const idx = str.indexOf(marketplaceUrls.catalog) + marketplaceUrls.catalog.length + searchSymbolsCount;
+    const startIndex = str.indexOf(marketplaceUrls.catalog) + marketplaceUrls.catalog.length;
+    const endIndex = str.indexOf('/', startIndex);
 
-    if(idx > str.length) return '';
+    if(endIndex === - 1) return '';
 
-    return str.slice(0, idx);
+    return str.slice(0, endIndex);
 }
 
 // Проверка на ссылку
