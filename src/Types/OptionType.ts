@@ -1,4 +1,7 @@
+import { SellerType } from "./SellerType";
+
 export type OptionType = {
-    key: string;
+    key: number;
     value: string;
+    seller: SellerType;
 }

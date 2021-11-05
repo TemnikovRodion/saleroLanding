@@ -2,7 +2,7 @@ import { AutocompleteApi } from '@/Api/Autocomplete';
 import { OptionType } from '@/Types/OptionType';
 import { SellerType } from '@/Types/SellerType';
 import { useCallback, useState } from 'react';
-import { MarketplaceRouting } from '@/Routing';
+import { searchUtils } from '@/Utils/SearchUtils';
 
 export const useAutocompleteOptions = (setSeller: (seller?: SellerType) => void) => {
   const [autocompleteExpression, setAutocompleteExpression] = useState('');
@@ -17,29 +17,25 @@ export const useAutocompleteOptions = (setSeller: (seller?: SellerType) => void)
   ); // selectSeller
 
   const loadAutocompleteOptions = useCallback((value: string) => {
-    let seachExpression = '';
+    // Получаем тип поискового запроса
+    const searchExpressionType = searchUtils.getSearchExpressionType(value);
 
-    // Проверка url
-    const { isSeller, isCatalog } = MarketplaceRouting.isMarketplaceUrl(value);
-    if(isSeller || isCatalog) {
-      seachExpression = isSeller ? MarketplaceRouting.sliceSellerUrl(value) : MarketplaceRouting.sliceCatalogUrl(value);
-    } else if(value.length > 2) {
-      seachExpression = value.slice(0, 3).toLowerCase();
-    } // if
+    // Форматируем поисковый запрос по типу
+    const formattedSearchExpression = searchUtils.getFormattedSearchExpression(value, searchExpressionType);
 
-    if (autocompleteExpression.localeCompare(seachExpression) !== 0
-        && (seachExpression.length === 3 || ((isSeller || isCatalog) && seachExpression.length !== 0))){
-      setAutocompleteExpression(seachExpression);
-
-      AutocompleteApi.getAutocompleteList({ item: seachExpression })
+    if (searchUtils.needLoadAutocompleteList(formattedSearchExpression, autocompleteExpression, searchExpressionType)) {
+      setAutocompleteExpression(formattedSearchExpression);
+    
+      AutocompleteApi.getAutocompleteList({ item: formattedSearchExpression })
       .then((response) => {
         const suggestion_list = response.data.suggestion_list;
-
+    
         setSellerOptions(suggestion_list);
         setAutocompleteOptions(
           suggestion_list.map((item) => ({
-            key: `${item.seller_name}_${item.url}_${item.ogrn}`,
+            key: item.seller_id,
             value: item.seller_name,
+            seller: item
           })),
         );
       })

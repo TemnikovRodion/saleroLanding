@@ -1,8 +1,8 @@
 export type SellerType = {
   id: number;
-  inn: string;
   seller_id: number;
   seller_name: string;
+  matching_product_id?: number;
   url: string;
-  ogrn: string;
+  ogrn?: string;
 };

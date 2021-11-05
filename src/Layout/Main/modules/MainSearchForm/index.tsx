@@ -5,8 +5,9 @@ import { Svg } from '@/Static';
 import { useAutocompleteOptions } from './hooks/useAutocompleteOptions';
 import { useCalculateForm } from './hooks/useCalculateForm';
 import { SellerType } from '@/Types/SellerType';
-import './styles.scss';
 import { SellerInfoType } from '@/Types/SellerInfoType';
+import './styles.scss';
+import { searchUtils } from '@/Utils/SearchUtils';
 
 type Props = {
   seller?: SellerType;
@@ -55,27 +56,26 @@ export const MainSearchForm = ({
                 showSearch={true}
                 showArrow={false}
                 placeholder={'ОГРН, ссылка на продавца, название юр.лица'}
-                onSearch={(value) => {
-                  loadAutocompleteOptions(value);
-                }}
+                options={autocompleteOptions}
+                onSearch={(value) => { loadAutocompleteOptions(value); }}
                 filterOption={(value, option) => {
                   if(option) {
-                    return String(option.key).toLowerCase().includes(value.toLowerCase());
+                    const sellerInfo = option.seller as SellerType;
+
+                    const searchExpressionType = searchUtils.getSearchExpressionType(value);
+                    const formattedFilterExpression = searchUtils.getFormattedFilterExpression(value, searchExpressionType);
+
+                    return sellerInfo.seller_name.toLowerCase().includes(formattedFilterExpression)
+                      || (sellerInfo.ogrn?.toLowerCase().includes(formattedFilterExpression) ?? false)
+                      || (sellerInfo.matching_product_id?.toString().toLowerCase().includes(formattedFilterExpression) ?? false)
+                      || (sellerInfo.url.toLowerCase().includes(formattedFilterExpression));
                   } // if
 
                   return false;
                 }}
-                onChange={(value) => {
-                  selectSeller(String(value));
-                }}
+                onChange={(value) => { selectSeller(String(value)); }}
                 className={'main-search-input'}
-              >
-                {autocompleteOptions.map(option => (
-                  <Select.Option key={option.key} value={option.value}>
-                    {option.value}
-                  </Select.Option>
-                ))}
-              </Select>
+              />
 
               <Button
                 loading={isLoading}
