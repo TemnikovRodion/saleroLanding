@@ -13,6 +13,15 @@
   }
 }
 
+.ant-btn[disabled],
+.ant-btn[disabled]:hover,
+.ant-btn[disabled]:focus,
+.ant-btn[disabled]:active {
+  color: $white;
+  background: $purple;
+  font-weight: 500;
+}
+
 .ant-select {
   margin-bottom: 10px;
 }
@@ -76,4 +85,13 @@
 
 .ant-select-item-option-selected:not(.ant-select-item-option-disabled) {
   background-color: $blue-light;
+}
+
+.ant-input:placeholder-shown {
+  background: $white !important;
+}
+
+.ant-input:focus,
+.ant-input-focused {
+  background: $white !important;
 }

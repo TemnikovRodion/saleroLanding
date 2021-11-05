@@ -47,22 +47,20 @@ export const MainAlerts = ({ seller, alertsBlockRef }: Props): React.ReactElemen
                   }`}
                 </Title>
 
-                <Tooltip
-                  trigger={'hover'}
-                  title={!seller ? 'Пожалуйста, сначала введите ОГРН, ссылку на продавца или название юр.лица!' : ''}
-                  placement={'topRight'}
-                >
-                  <Input
-                    value={email}
-                    placeholder={'Введите почту'}
-                    className={'main-alerts-input'}
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
-                </Tooltip>
+                <Input
+                  value={email}
+                  placeholder={'Введите почту'}
+                  className={'main-alerts-input'}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
 
                 <Tooltip
                   trigger={'hover'}
-                  title={!seller ? 'Пожалуйста, сначала введите ОГРН, ссылку на продавца или название юр.лица!' : ''}
+                  title={
+                    !seller
+                      ? 'Пожалуйста, сначала введите ОГРН, ссылку на продавца или название юр.лица в поле выше!'
+                      : ''
+                  }
                   placement={'topRight'}
                 >
                   <Button loading={isLoading} disabled={!seller || !email || isLoading} onClick={subscribe}>
