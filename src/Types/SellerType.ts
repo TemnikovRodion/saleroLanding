@@ -3,6 +3,6 @@ export type SellerType = {
   seller_id: number;
   seller_name: string;
   matching_product_id?: number;
-  url: string;
+  seller_url: string;
   ogrn?: string;
 };

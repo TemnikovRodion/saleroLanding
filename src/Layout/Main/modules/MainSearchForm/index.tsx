@@ -15,11 +15,7 @@ type Props = {
   setSellerInfo: (sellerInfo: SellerInfoType) => void;
 };
 
-export const MainSearchForm = ({
-  seller,
-  setSeller,
-  setSellerInfo
-}: Props): React.ReactElement => {
+export const MainSearchForm = ({ seller, setSeller, setSellerInfo }: Props): React.ReactElement => {
   const { loadAutocompleteOptions, selectSeller, autocompleteOptions } = useAutocompleteOptions(setSeller);
   const { calculate, isLoading } = useCalculateForm(setSellerInfo, seller);
 
@@ -57,31 +53,37 @@ export const MainSearchForm = ({
                 showArrow={false}
                 placeholder={'ОГРН, ссылка на продавца, название юр.лица'}
                 options={autocompleteOptions}
-                onSearch={(value) => { loadAutocompleteOptions(value); }}
+                onSearch={(value) => {
+                  loadAutocompleteOptions(value);
+                }}
                 filterOption={(value, option) => {
-                  if(option) {
+                  if (option) {
                     const sellerInfo = option.seller as SellerType;
 
                     const searchExpressionType = searchUtils.getSearchExpressionType(value);
-                    const formattedFilterExpression = searchUtils.getFormattedFilterExpression(value, searchExpressionType);
+                    const formattedFilterExpression = searchUtils.getFormattedFilterExpression(
+                      value,
+                      searchExpressionType,
+                    );
 
-                    return sellerInfo.seller_name.toLowerCase().includes(formattedFilterExpression)
-                      || (sellerInfo.ogrn?.toLowerCase().includes(formattedFilterExpression) ?? false)
-                      || (sellerInfo.matching_product_id?.toString().toLowerCase().includes(formattedFilterExpression) ?? false)
-                      || (sellerInfo.url.toLowerCase().includes(formattedFilterExpression));
+                    return (
+                      sellerInfo.seller_name.toLowerCase().includes(formattedFilterExpression) ||
+                      (sellerInfo.ogrn?.toLowerCase().includes(formattedFilterExpression) ?? false) ||
+                      (sellerInfo.matching_product_id?.toString().toLowerCase().includes(formattedFilterExpression) ??
+                        false) ||
+                      sellerInfo.seller_url.toLowerCase().includes(formattedFilterExpression)
+                    );
                   } // if
 
                   return false;
                 }}
-                onChange={(value) => { selectSeller(String(value)); }}
+                onChange={(value) => {
+                  selectSeller(String(value));
+                }}
                 className={'main-search-input'}
               />
 
-              <Button
-                loading={isLoading}
-                disabled={isLoading || !seller}
-                onClick={calculate}              
-              >
+              <Button loading={isLoading} disabled={isLoading || !seller} onClick={calculate}>
                 Найти
               </Button>
             </div>
