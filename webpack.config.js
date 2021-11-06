@@ -7,7 +7,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const webpack = require('webpack');
 
-let isLocalMode = false;
 let isDevMode = false;
 let isProdMode = false;
 
@@ -17,7 +16,7 @@ const plugins = () => {
 
   let api_host = '';
   if (isProdMode) api_host = "'https://api.alerts.salero.io'";
-  if (isDevMode) api_host = "'http://164.90.202.88:7002'";
+  if (isDevMode) api_host = "'https://api.alerts.salero.io'";
 
   base.push(
     new webpack.DefinePlugin({

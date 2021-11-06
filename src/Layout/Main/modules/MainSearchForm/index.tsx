@@ -67,7 +67,7 @@ export const MainSearchForm = ({
 
                     return sellerInfo.seller_name.toLowerCase().includes(formattedFilterExpression)
                       || (sellerInfo.ogrn?.toLowerCase().includes(formattedFilterExpression) ?? false)
-                      || (sellerInfo.matching_product_id?.toString().toLowerCase().includes(formattedFilterExpression) ?? false)
+                      || (sellerInfo.matched_product_id?.toString().toLowerCase().includes(formattedFilterExpression) ?? false)
                       || (sellerInfo.url.toLowerCase().includes(formattedFilterExpression));
                   } // if
 
